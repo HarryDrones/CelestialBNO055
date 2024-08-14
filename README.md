@@ -1,2 +1,6 @@
 # CelestialBNO055
-Calculates 2 possible Lat and Lon using star database for GHA, Declination. Very messy right now.  
+Calculates 2 possible Lat and Lon using star database for GHA, Declination. Very messy right now. 
+
+It's written in Processing 3.  It uses a database file(included)that I found somewhere on the internet from an amateur astronomer who deserves credit(link coming) for the database.  I access the fields using an sql query to get star name, GHA, and declination.  These elements are used to calculate the azimuth and altitude of a star viewed from an estimated latitude and longitude.  This estimated position is adjustable with sliders for degrees, minutes, seconds.  The intersections(two) of two circles of position are calculated. The latitude and longitude of these two intersections are listed with one being likely and the other not.  A navigation star from the first list on the left is selected that is in the NW quadrant of the sky.  The second star from the list on the right should be from the SW quadrant.  This is necessary for the calculations to work.  
+
+One experiment I've tried with this is to connect a Bosch BNO055 IMU and send the output from the pitch axis over serial.  This observed "altitude" is substituted into the calculation of one of circles. I adjusted the IMU until it matches the expected altitude and I get a position which is within a 1/10 of a degree latitude and 1/10 of longitude of the estimated position.  This all happens in real time.
